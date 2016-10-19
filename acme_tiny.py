@@ -18,6 +18,7 @@ def get_crt(account_key, csr, acme_dir, log=LOGGER, CA=DEFAULT_CA):
     def _b64(b):
         return base64.urlsafe_b64encode(b).decode('utf8').replace("=", "")
 
+    # helper function to fetch the correct terms link
     def get_agreement():
         try:
             resp = urlopen(DEFAULT_CA + '/terms')
