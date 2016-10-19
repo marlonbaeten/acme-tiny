@@ -2,9 +2,9 @@
 import argparse, subprocess, json, os, sys, base64, binascii, time, hashlib, re, copy, textwrap, logging
 try:
     from urllib.request import urlopen # Python 3
-	from urllib.error import URLError, HTTPError
+    from urllib.error import URLError, HTTPError
 except ImportError:
-	from urllib2 import urlopen, URLError, HTTPError
+    from urllib2 import urlopen, URLError, HTTPError
 
 #DEFAULT_CA = "https://acme-staging.api.letsencrypt.org"
 DEFAULT_CA = "https://acme-v01.api.letsencrypt.org"
@@ -25,7 +25,7 @@ def get_crt(account_key, csr, acme_dir, log=LOGGER, CA=DEFAULT_CA):
             return resp.url
         except IOError as e:
             logging.error('Get agreement failed: {0}'.format(e.message))
-            return last_known_agreement
+            return 'https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf'
 
     # helper function run openssl subprocess
     def _openssl(command, options, communicate=None):
